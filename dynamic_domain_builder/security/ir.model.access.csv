@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_field_domain_rule,access_field_domain_rule,model_field_domain_rule,,1,1,1,1
+access_field_domain_rule_line,access_field_domain_rule_line,model_field_domain_rule_line,,1,1,1,1
+
