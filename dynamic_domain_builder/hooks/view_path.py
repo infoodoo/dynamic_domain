@@ -14,7 +14,7 @@ def patched_name_search(self, name='', args=None, operator='ilike', limit=100):
     args = args or []
 
     # 1. Prefer user-specific rules
-    rules = self.env['field.domain.rule.line'].search([
+    rules = self.env['field.domain.rule.line'].sudo().search([
         ('field_name.relation', '=', self._name),
         ('rule_id.active', '=', True),
         ('rule_id.user_id', '=', self.env.uid),
@@ -22,7 +22,7 @@ def patched_name_search(self, name='', args=None, operator='ilike', limit=100):
 
     # 2. Fallback to global rules
     if not rules:
-        rules = self.env['field.domain.rule.line'].search([
+        rules = self.env['field.domain.rule.line'].sudo().search([
             ('field_name.relation', '=', self._name),
             ('rule_id.active', '=', True),
             ('rule_id.user_id', '=', False),

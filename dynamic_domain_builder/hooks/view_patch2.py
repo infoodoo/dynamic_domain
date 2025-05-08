@@ -19,11 +19,11 @@ class Base(models.AbstractModel):
             return super().web_search_read(domain, specification, offset, limit, order, count_limit)
 
         # ✅ Domain rules logic
-        rules = self.env['field.domain.rule.line'].search([
+        rules = self.env['field.domain.rule.line'].sudo().search([
             ('field_name.relation', '=', self._name),
             ('rule_id.active', '=', True),
             ('rule_id.user_id', '=', self.env.uid),
-        ]) or self.env['field.domain.rule.line'].search([
+        ]) or self.env['field.domain.rule.line'].sudo().search([
             ('field_name.relation', '=', self._name),
             ('rule_id.active', '=', True),
             ('rule_id.user_id', '=', False),
