@@ -29,7 +29,7 @@ class FieldDomainRule(models.Model):
         user_id = vals.get('user_id') or False
 
         domain = [('model_id', '=', model_id), ('user_id', '=', user_id)]
-        if self.search_count(domain):
+        if self.sudo().search_count(domain):
             raise ValidationError("A rule for this model and user already exists.")
         return super().create(vals)
 
@@ -44,7 +44,7 @@ class FieldDomainRule(models.Model):
                 ('id', '!=', rec.id)  # exclude self to avoid false positive
             ]
 
-            if self.search_count(domain):
+            if self.sudo().search_count(domain):
                 raise ValidationError("A rule for this model and user already exists.")
 
         return super().write(vals)
@@ -80,7 +80,7 @@ class FieldDomainRuleLine(models.Model):
         for rec in self:
             rec.related_domain = []
             if rec.field_name and rec.field_name.ttype in ['many2one', 'many2many'] and rec.field_name.relation:
-                related_model = self.env['ir.model'].search([('model', '=', rec.field_name.relation)], limit=1)
+                related_model = self.env['ir.model'].sudo().search([('model', '=', rec.field_name.relation)], limit=1)
                 if related_model:
                     rec.related_domain = [('model_id', '=', related_model.id),('ttype', 'not in', ['many2one', 'many2many', 'one2many'])]
 

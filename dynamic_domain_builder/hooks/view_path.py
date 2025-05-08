@@ -22,15 +22,16 @@ def name_search(self, name='', args=None, operator='ilike', limit=100) -> list[t
     args = args or []
 
     # 🧠 Rule logic: Prefer user-specific rules
-    rules = self.env['field.domain.rule.line'].search([
+    rules = self.env['field.domain.rule.line'].sudo().search([
         ('field_name.relation', '=', self._name),
         ('rule_id.active', '=', True),
         ('rule_id.user_id', '=', self.env.uid),
-    ]) or self.env['field.domain.rule.line'].search([
+    ]) or self.env['field.domain.rule.line'].sudo().search([
         ('field_name.relation', '=', self._name),
         ('rule_id.active', '=', True),
         ('rule_id.user_id', '=', False),
     ])
+
 
     for line in rules:
         try:
