@@ -10,8 +10,8 @@
     'author': "InfoLabWeb",
     'website': "https://infolabweb.odoo.com",
     'license': 'OPL-1',
-    # 'price': 24,
-    # 'currency': 'USD',
+    'price': 18,
+    'currency': 'USD',
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
