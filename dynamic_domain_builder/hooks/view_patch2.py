@@ -16,11 +16,11 @@ class Base(models.AbstractModel):
         is_from_search_more = self.env.context.get("is_from_search_more")
 
         if is_from_search_more:
-            rules = self.env['field.domain.rule.line'].search([
+            rules = self.env['field.domain.rule.line'].sudo().search([
                 ('field_name.relation', '=', self._name),
                 ('rule_id.active', '=', True),
                 ('rule_id.user_id', '=', self.env.uid),
-            ]) or self.env['field.domain.rule.line'].search([
+            ]) or self.env['field.domain.rule.line'].sudo().search([
                 ('field_name.relation', '=', self._name),
                 ('rule_id.active', '=', True),
                 ('rule_id.user_id', '=', False),
