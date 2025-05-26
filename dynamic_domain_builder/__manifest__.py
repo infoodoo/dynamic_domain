@@ -10,8 +10,8 @@
     'author': "InfoLabWeb",
     'website': "https://infolabweb.odoo.com",
     'license': 'OPL-1',
-    'price': 18,
-    'currency': 'USD',
+    # 'price': 18,
+    # 'currency': 'USD',
     'category': 'Uncategorized',
     'version': '18.0',
 
