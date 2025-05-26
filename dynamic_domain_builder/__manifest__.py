@@ -10,10 +10,10 @@
     'author': "InfoLabWeb",
     'website': "https://infolabweb.odoo.com",
     'license': 'OPL-1',
-    'price': 18,
+    # 'price': 18,
     'currency': 'USD',
     'category': 'Uncategorized',
-    'version': '17.0',
+    # 'version': '17.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'web'],
